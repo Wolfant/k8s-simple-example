@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: page
+spec:
+  selector:
+    matchLabels:
+      app: page
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: page
+    spec:
+      containers:
+      - name: page
+        image: wolfant/privado-papu-nico
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
+          name: page-port
+
